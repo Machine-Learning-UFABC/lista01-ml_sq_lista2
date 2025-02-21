@@ -1,11 +1,10 @@
 ---
 title: "Solução Lista 01"
 author: |
-        | Nome: Fulano de Tal
-        | E-mail: fdt@aluno.ufabc.edu.br
-        | Nome: Fulano de Tal
-        | E-mail: fdt@aluno.ufabc.edu.br
-        | (Não é preciso informar os RAs)
+        | Nome: Henrique Queiroz Reuter
+        | E-mail: reuter.q@aluno.ufabc.edu.br
+        | Nome: Rodrigo Martins de Souza
+        | E-mail: souza.r@aluno.ufabc.edu.br
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: pdf_document
 ---
@@ -25,9 +24,28 @@ options(width =70)
 
 
 ## Exercício 02
-
+A maldição da dimencionalidade se refere ao aumento das distancias dos pontos conforme se aumenta a quantidade de dimenções. Ou seja para algoritmos de apredendisado de maquina que depende desse tipo de calculo, conforme a complexidade do problema aumenta, levando em consideração mais fatores, fica cada vez mais computacionalmente custoso.
 
 ## Exercício 03
+```{r}
+library(tidyverse)
+
+kNN <- function(k,x,D){
+  D2 <- D %>% mutate( dist = (x[1] - x1)**2 + (x[2] - x2)**2 ) %>%
+  arrange( dist ) %>% head(k) %>% count(y) %>% arrange(n) %>% tail(1)
+  r <- D2[1]
+  return (r)
+}
+
+D <- tibble( x1 = rnorm(100,1,1),
+             x2 = rnorm(100,-1,2),
+             y = factor(sample(c("toranja","laranja"),100,replace = T)))
+x <- c(4,1)
+k<-7
+print (kNN(k,x,D))
+
+
+```
 
 
 ## Exercício 04
